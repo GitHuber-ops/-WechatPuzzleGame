@@ -1,0 +1,27 @@
+name: Test, Build and Deploy
+# This workflow is triggered on pushes to the repository.
+on:
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10"
+
+      - name: Install the dependencies of npm package canvas
+        run: sudo apt-get install libcairo2-dev libjpeg-dev libpango1.0-dev libgif-dev build-essential g++
+
+      - name: Install node modules
+        run: npm install
+
+      - name: Test
+        run: npm test

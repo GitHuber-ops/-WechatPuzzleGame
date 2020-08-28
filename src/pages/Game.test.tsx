@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Game from './Game';
 
-test('renders learn react link', () => {
+test('renders title', () => {
   const { getByText } = render(<Game />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const titleElement = getByText(/拼图小游戏/i);
+  expect(titleElement).toBeInTheDocument();
 });
