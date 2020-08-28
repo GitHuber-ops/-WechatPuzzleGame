@@ -1,0 +1,58 @@
+body {
+  background-color: #faf8ef;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.Game-title {
+  color: #776e65;
+  font-size: 6vh;
+  margin-top: 2vh;
+}
+
+.Game-container {
+  width: 90vw;
+  height: 90vw;
+  border-radius: 6px;
+  background-color: #bbada0;
+  padding: 6px;
+}
+
+.Pieces-picker {
+  background-color: #bbada0;
+  width: 100%;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.Pieces-picker::-webkit-scrollbar {
+  display: none;
+}
+
+.Jigsaw-piece {
+  height: 27vw;
+  width: 27vw;
+  border: 2px black;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+@media (min-aspect-ratio: 2/3) {
+  .Game-container {
+    width: 60vh;
+    height: 60vh;
+  }
+
+  .Jigsaw-piece {
+    height: 18vh;
+    width: 18vh;
+  }
+}
