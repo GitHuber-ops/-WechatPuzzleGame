@@ -25,7 +25,7 @@ function DraggablePiece(props: DraggablePieceProps) {
 
         setTimeout(() => {
             setIsHide(true);
-        }, 1)
+        }, 500)
     }
 
     const handleDragEnd = function (event: React.DragEvent<HTMLDivElement>) {
