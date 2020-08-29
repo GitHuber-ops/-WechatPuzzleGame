@@ -23,13 +23,18 @@ function DraggablePiece(props: DraggablePieceProps) {
         }));
         event.dataTransfer.dropEffect = "move";
 
-        setTimeout(() => {
-            setIsHide(true);
-        }, 500)
+        if (!document.hasOwnProperty("ontouchstart")) {
+            setTimeout(() => {
+                setIsHide(true);
+            }, 1)
+        }
     }
 
     const handleDragEnd = function (event: React.DragEvent<HTMLDivElement>) {
-        setIsHide(false);
+
+        if (!document.hasOwnProperty("ontouchstart")) {
+            setIsHide(false);
+        }
     }
 
     if (isDropped) {
