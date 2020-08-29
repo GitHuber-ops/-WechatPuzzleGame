@@ -16,16 +16,28 @@ function DraggablePiece(props: DraggablePieceProps) {
 
     let isDropped = gameState.useIsDropped(props.x, props.y);
 
+    const isAndroid = /(android)/i.test(navigator.userAgent);
+
     const handleDragStart = function (event: React.DragEvent<HTMLDivElement>) {
         event.dataTransfer.setData("game/piece-coordinate", JSON.stringify({
             x: props.x,
             y: props.y
         }));
         event.dataTransfer.dropEffect = "move";
+
+
+        if (!isAndroid) {
+            setTimeout(() => {
+                setIsHide(true);
+            }, 1)
+        }
     }
 
     const handleDragEnd = function (event: React.DragEvent<HTMLDivElement>) {
 
+        if (!isAndroid) {
+            setIsHide(false);
+        }
     }
 
     if (isDropped) {
