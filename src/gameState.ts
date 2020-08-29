@@ -32,6 +32,4 @@ class GameState {
 
 const gameState = new GameState("puzzle.png", 4);
 
-console.log(gameState);
-
 export default gameState;

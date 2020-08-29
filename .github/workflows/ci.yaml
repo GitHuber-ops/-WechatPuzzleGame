@@ -5,8 +5,8 @@ on:
     branches:
       - master
 jobs:
-  test:
-    name: Test
+  ci:
+    name: Test, Build and Delpoy
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -18,10 +18,20 @@ jobs:
           node-version: "10"
 
       - name: Install the dependencies of npm package canvas
-        run: sudo apt-get install libcairo2-dev libjpeg-dev libpango1.0-dev libgif-dev build-essential g++
+        run: sudo apt-get -y install build-essential g++ libcairo2-dev libgif-dev libjpeg-dev libpango1.0-dev
 
       - name: Install node modules
         run: npm install
 
       - name: Test
         run: npm test
+
+      - name: Build
+        run: npm build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.5.9
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
